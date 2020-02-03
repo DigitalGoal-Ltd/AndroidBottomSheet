@@ -15,6 +15,7 @@ package de.mrapp.android.bottomsheet.adapter;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.ColorInt;
@@ -29,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,6 +157,16 @@ public class DividableGridAdapter extends BaseAdapter {
     private int itemColor;
 
     /**
+     * The text typeface of the adapter's divider.
+     */
+    private Typeface dividerTypeface;
+
+    /**
+     * The text typeface of the adapter title.
+     */
+    private Typeface itemTypeface;
+
+    /**
      * The color of the adapter's dividers.
      */
     private int dividerColor;
@@ -231,7 +243,10 @@ public class DividableGridAdapter extends BaseAdapter {
         ItemViewHolder viewHolder = new ItemViewHolder();
         viewHolder.iconImageView = view.findViewById(android.R.id.icon);
         viewHolder.titleTextView = view.findViewById(android.R.id.title);
+
         view.setTag(viewHolder);
+
+
         return view;
     }
 
@@ -273,9 +288,15 @@ public class DividableGridAdapter extends BaseAdapter {
         viewHolder.titleTextView.setText(item.getTitle());
         viewHolder.titleTextView.setEnabled(item.isEnabled());
 
+
         if (getItemColor() != -1) {
             viewHolder.titleTextView.setTextColor(getItemColor());
         }
+
+        if(getItemTypeface() != null){
+            viewHolder.titleTextView.setTypeface(getItemTypeface());
+        }
+
     }
 
     /**
@@ -336,6 +357,10 @@ public class DividableGridAdapter extends BaseAdapter {
             viewHolder.titleTextView.setTextColor(dividerColor);
             viewHolder.leftDivider.setBackgroundColor(dividerColor);
             viewHolder.rightDivider.setBackgroundColor(dividerColor);
+        }
+
+        if(dividerTypeface != null) {
+            viewHolder.titleTextView.setTypeface(dividerTypeface);
         }
     }
 
@@ -461,6 +486,47 @@ public class DividableGridAdapter extends BaseAdapter {
     public final void setItemColor(@ColorInt final int color) {
         this.itemColor = color;
     }
+
+    /**
+     * Returns the typeface of the adapter's dividers.
+     *
+     * @return The typeface of the adapter's dividers.
+     */
+    public final Typeface getDividerTypeface() {
+        return dividerTypeface;
+    }
+
+    /**
+     * Sets the typeface of the adapter's dividers.
+     *
+     * @param typeface
+     *         The typeface
+     */
+    public final void setDividerTypeface( final Typeface typeface) {
+        this.dividerTypeface = typeface;
+    }
+
+
+    /**
+     * Returns the typeface of the adapter title.
+     *
+     * @return The typeface of the adapter title.
+     */
+    public final Typeface getItemTypeface() {
+        return itemTypeface;
+    }
+
+    /**
+     * Sets the typeface of the adapter title.
+     *
+     * @param typeface
+     *         The typeface to be set on the title
+     */
+    public final void setItemTypeface( final Typeface typeface) {
+        this.itemTypeface = typeface;
+    }
+
+
 
     /**
      * Returns the color of the adapter's dividers.

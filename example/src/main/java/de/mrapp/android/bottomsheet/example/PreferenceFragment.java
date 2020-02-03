@@ -15,6 +15,7 @@ package de.mrapp.android.bottomsheet.example;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -24,6 +25,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import de.mrapp.android.bottomsheet.BottomSheet;
@@ -92,7 +94,9 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
     private void initializeBottomSheet() {
         BottomSheet.Builder builder = createBottomSheetBuilder();
         addItems(builder);
+
         bottomSheet = builder.create();
+
     }
 
     /**
@@ -268,6 +272,9 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
                 index++;
             }
         }
+        builder.setDividerTypeface(Typeface.MONOSPACE);
+        builder.setItemTypeface(Typeface.MONOSPACE);
+        builder.setTitleTypeface(Typeface.MONOSPACE);
 
         builder.setOnItemClickListener(createItemClickListener());
     }

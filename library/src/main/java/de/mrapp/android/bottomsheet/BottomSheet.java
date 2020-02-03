@@ -25,6 +25,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -58,6 +59,7 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import de.mrapp.android.bottomsheet.adapter.DividableGridAdapter;
@@ -193,6 +195,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
             if (color != -1) {
                 setTitleColor(color);
             }
+
         }
 
         /**
@@ -452,6 +455,50 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
             bottomSheet.setItemColor(color);
             return this;
         }
+
+
+
+        /**
+         * Sets the typeface of the dividers of the bottom sheet, which is created by the builder.
+         *
+         * @param typeface
+         *         The typeface
+         * @return The builder, the method has been called upon, as an instance of the class {@link
+         * Builder}
+         */
+        public final Builder setDividerTypeface(final Typeface typeface) {
+            bottomSheet.setDividerTypeface(typeface);
+            return this;
+        }
+
+
+        /**
+         * Sets the typeface of the dividers of the bottom sheet, which is created by the builder.
+         *
+         * @param typeface
+         *         The typeface
+         * @return The builder, the method has been called upon, as an instance of the class {@link
+         * Builder}
+         */
+        public final Builder setItemTypeface(final Typeface typeface) {
+            bottomSheet.setItemTypeface(typeface);
+            return this;
+        }
+
+
+        /**
+         * Sets the typeface of the title of the bottom sheet, which is created by the builder.
+         *
+         * @param typeface
+         *         The typeface
+         * @return The builder, the method has been called upon, as an instance of the class {@link
+         * Builder}
+         */
+        public final Builder setTitleTypeface(final Typeface typeface) {
+            bottomSheet.setTitleTypeface(typeface);
+            return this;
+        }
+
 
         /**
          * Sets the color of the dividers of the bottom sheet, which is created by the builder.
@@ -1004,6 +1051,13 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
      */
     private TextView titleTextView;
 
+
+    /**
+     * The typeface of the text view.
+     */
+    private Typeface titleTypeface;
+
+
     /**
      * The layout, which is used to show the bottom sheet's content.
      */
@@ -1321,6 +1375,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
             adaptTitle();
             adaptTitleColor();
             adaptIcon();
+            adaptTitleTypeface();
         }
     }
 
@@ -1332,6 +1387,16 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
             titleTextView.setTextColor(titleColor);
         }
     }
+
+    /**
+     * Adapts the typeface of the bottom sheet's title.
+     */
+    private void adaptTitleTypeface() {
+        if (titleTextView != null && titleTypeface != null) {
+            titleTextView.setTypeface(titleTypeface);
+        }
+    }
+
 
     /**
      * Adapts the bottom sheet's title.
@@ -1763,6 +1828,75 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
      */
     public final void setItemColor(@ColorInt final int color) {
         adapter.setItemColor(color);
+        adapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Returns the Typeface of the items of the bottom sheet.
+     *
+     * @return The color of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * custom color has been set
+     */
+    public final Typeface getTitleTypeface() {
+        return adapter.getDividerTypeface();
+    }
+
+
+    /**
+     * Sets the typeface of the items of the bottom sheet.
+     *
+     * @param typeface
+     *         The typeface
+     */
+    public final void setTitleTypeface(final Typeface typeface) {
+        this.titleTypeface = typeface;
+        adaptTitleTypeface();
+    }
+
+
+    /**
+     * Sets the typeface of the items of the bottom sheet.
+     *
+     * @param typeface
+     *         The typeface
+     */
+    public final void setDividerTypeface(final Typeface typeface) {
+        adapter.setDividerTypeface(typeface);
+        adapter.notifyDataSetChanged();
+    }
+
+
+    /**
+     * Returns the Typeface of the items of the bottom sheet.
+     *
+     * @return The color of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * custom color has been set
+     */
+    public final Typeface getDividerTypeface() {
+        return adapter.getDividerTypeface();
+    }
+
+
+
+
+    /**
+     * Returns the Typeface of the items of the bottom sheet.
+     *
+     * @return The color of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * custom color has been set
+     */
+    public final Typeface getItemTypeface() {
+        return adapter.getItemTypeface();
+    }
+
+    /**
+     * Sets the typeface of the items of the bottom sheet.
+     *
+     * @param typeface
+     *         The typeface
+     */
+    public final void setItemTypeface(final Typeface typeface) {
+        adapter.setItemTypeface(typeface);
         adapter.notifyDataSetChanged();
     }
 
@@ -2478,6 +2612,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
         adaptDragSensitivity();
         adaptWidth();
         adaptGridViewHeight();
+        adaptTitleTypeface();
     }
 
     @Override
