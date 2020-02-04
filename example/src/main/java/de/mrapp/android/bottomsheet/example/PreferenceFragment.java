@@ -276,6 +276,11 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         builder.setItemTypeface(Typeface.MONOSPACE);
         builder.setTitleTypeface(Typeface.MONOSPACE);
 
+
+        builder.setDividerTextSize(18);
+        builder.setItemTextSize(10);
+        builder.setTitleTextSize(20);
+
         builder.setOnItemClickListener(createItemClickListener());
     }
 

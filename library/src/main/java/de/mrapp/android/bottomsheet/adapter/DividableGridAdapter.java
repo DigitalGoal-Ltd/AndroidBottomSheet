@@ -30,7 +30,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -167,6 +166,16 @@ public class DividableGridAdapter extends BaseAdapter {
     private Typeface itemTypeface;
 
     /**
+     * The text textSize of the adapter's divider.
+     */
+    private int dividerTextSize = -1;
+
+    /**
+     * The text textSize of the adapter title.
+     */
+    private int itemTextSize = -1;
+
+    /**
      * The color of the adapter's dividers.
      */
     private int dividerColor;
@@ -297,6 +306,10 @@ public class DividableGridAdapter extends BaseAdapter {
             viewHolder.titleTextView.setTypeface(getItemTypeface());
         }
 
+        if(getItemTextSize() != -1){
+            viewHolder.titleTextView.setTextSize(getItemTextSize());
+        }
+
     }
 
     /**
@@ -359,8 +372,12 @@ public class DividableGridAdapter extends BaseAdapter {
             viewHolder.rightDivider.setBackgroundColor(dividerColor);
         }
 
-        if(dividerTypeface != null) {
-            viewHolder.titleTextView.setTypeface(dividerTypeface);
+        if(getDividerTypeface() != null) {
+            viewHolder.titleTextView.setTypeface(getDividerTypeface());
+        }
+
+        if(getDividerTextSize() != -1) {
+            viewHolder.titleTextView.setTextSize(getDividerTextSize());
         }
     }
 
@@ -488,6 +505,58 @@ public class DividableGridAdapter extends BaseAdapter {
     }
 
     /**
+     * Returns the textSize of the adapter's dividers.
+     *
+     * @return The textSize of the adapter's dividers.
+     */
+    public final int getDividerTextSize() {
+        return dividerTextSize;
+    }
+
+    /**
+     * Sets the textSize of the adapter's dividers.
+     *
+     * @param textSize
+     *         The textSize
+     */
+    public final void setDividerTextSize( final int textSize) {
+        this.dividerTextSize = textSize;
+    }
+
+    /**
+     * Returns the textSize of the item's.
+     *
+     * @return The textSize of the item's.
+     */
+    public final int getItemTextSize() {
+        return itemTextSize;
+    }
+
+    /**
+     * Sets the textSize of the item's.
+     *
+     * @param textSize
+     *         The textSize
+     */
+    public final void setItemTextSize( final int textSize) {
+        this.itemTextSize = textSize;
+    }
+
+
+
+
+    /**
+     * Sets the typeface of the adapter title.
+     *
+     * @param typeface
+     *         The typeface to be set on the title
+     */
+    public final void setDividerTypeface( final Typeface typeface) {
+        dividerTypeface = typeface;
+    }
+
+
+    /**
      * Returns the typeface of the adapter's dividers.
      *
      * @return The typeface of the adapter's dividers.
@@ -496,25 +565,6 @@ public class DividableGridAdapter extends BaseAdapter {
         return dividerTypeface;
     }
 
-    /**
-     * Sets the typeface of the adapter's dividers.
-     *
-     * @param typeface
-     *         The typeface
-     */
-    public final void setDividerTypeface( final Typeface typeface) {
-        this.dividerTypeface = typeface;
-    }
-
-
-    /**
-     * Returns the typeface of the adapter title.
-     *
-     * @return The typeface of the adapter title.
-     */
-    public final Typeface getItemTypeface() {
-        return itemTypeface;
-    }
 
     /**
      * Sets the typeface of the adapter title.
@@ -527,6 +577,14 @@ public class DividableGridAdapter extends BaseAdapter {
     }
 
 
+    /**
+     * Returns the typeface of the adapter title.
+     *
+     * @return The typeface of the adapter title.
+     */
+    public final Typeface getItemTypeface() {
+        return itemTypeface;
+    }
 
     /**
      * Returns the color of the adapter's dividers.

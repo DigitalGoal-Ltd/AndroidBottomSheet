@@ -59,7 +59,6 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 import de.mrapp.android.bottomsheet.adapter.DividableGridAdapter;
@@ -482,6 +481,48 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
          */
         public final Builder setItemTypeface(final Typeface typeface) {
             bottomSheet.setItemTypeface(typeface);
+            return this;
+        }
+
+
+        /**
+         * Sets the TextSize of the title of the bottom sheet, which is created by the builder.
+         *
+         * @param TextSize
+         *         The TextSize to use on the title
+         * @return The builder, the method has been called upon, as an instance of the class {@link
+         * Builder}
+         */
+        public final Builder setTitleTextSize(final int TextSize) {
+            bottomSheet.setTitleTextSize(TextSize);
+            return this;
+        }
+
+
+        /**
+         * Sets the TextSize of the dividers of the bottom sheet, which is created by the builder.
+         *
+         * @param TextSize
+         *         The TextSize to use on the divider
+         * @return The builder, the method has been called upon, as an instance of the class {@link
+         * Builder}
+         */
+        public final Builder setDividerTextSize(final int TextSize) {
+            bottomSheet.setDividerTextSize(TextSize);
+            return this;
+        }
+
+
+        /**
+         * Sets the TextSize of the items of the bottom sheet, which is created by the builder.
+         *
+         * @param TextSize
+         *         The TextSize to use on the item
+         * @return The builder, the method has been called upon, as an instance of the class {@link
+         * Builder}
+         */
+        public final Builder setItemTextSize(final int TextSize) {
+            bottomSheet.setItemTextSize(TextSize);
             return this;
         }
 
@@ -1057,6 +1098,11 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
      */
     private Typeface titleTypeface;
 
+    /**
+     * The TextSize of the text view.
+     */
+    private int titleTextSize = -1;
+
 
     /**
      * The layout, which is used to show the bottom sheet's content.
@@ -1376,6 +1422,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
             adaptTitleColor();
             adaptIcon();
             adaptTitleTypeface();
+            adaptTitleTextSize();
         }
     }
 
@@ -1394,6 +1441,15 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
     private void adaptTitleTypeface() {
         if (titleTextView != null && titleTypeface != null) {
             titleTextView.setTypeface(titleTypeface);
+        }
+    }
+
+    /**
+     * Adapts the TextSize of the bottom sheet's title.
+     */
+    private void adaptTitleTextSize() {
+        if (titleTextView != null && titleTextSize != -1) {
+            titleTextView.setTextSize(titleTextSize);
         }
     }
 
@@ -1838,7 +1894,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
      * custom color has been set
      */
     public final Typeface getTitleTypeface() {
-        return adapter.getDividerTypeface();
+        return titleTypeface;
     }
 
 
@@ -1853,6 +1909,70 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
         adaptTitleTypeface();
     }
 
+    /**
+     * Returns the textSize of the title of the bottom sheet.
+     *
+     * @return The textsize of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * custom textsize has been set
+     */
+    public final int getTitleTextSize() {
+        return titleTextSize;
+    }
+
+
+    /**
+     * Sets the textSize of the items of the bottom sheet.
+     *
+     * @param textSize
+     *         The textSize
+     */
+    public final void setTitleTextSize(final int textSize) {
+        this.titleTextSize = textSize;
+        adaptTitleTextSize();
+    }
+    /**
+     * Returns the textSize of the items of the bottom sheet.
+     *
+     * @return The textSize of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * custom textSize has been set
+     */
+    public final int getItemTextSize() {
+        return adapter.getItemTextSize();
+    }
+
+
+    /**
+     * Sets the textSize of the items of the bottom sheet.
+     *
+     * @param TextSize
+     *         The textSize
+     */
+    public final void setItemTextSize(final int TextSize) {
+        adapter.setItemTextSize(TextSize);
+        adapter.notifyDataSetChanged();
+
+    }
+    /**
+     * Returns the textSize of the dividers of the bottom sheet.
+     *
+     * @return The textSize of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * custom color has been set
+     */
+    public final int getDividerTextSize() {
+        return adapter.getDividerTextSize();
+    }
+
+
+    /**
+     * Sets the typeface of the items of the bottom sheet.
+     *
+     * @param TextSize
+     *         The TextSize
+     */
+    public final void setDividerTextSize(final int TextSize) {
+        adapter.setDividerTextSize(TextSize);
+        adapter.notifyDataSetChanged();
+    }
 
     /**
      * Sets the typeface of the items of the bottom sheet.
@@ -2613,6 +2733,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
         adaptWidth();
         adaptGridViewHeight();
         adaptTitleTypeface();
+        adaptTitleTextSize();
     }
 
     @Override
