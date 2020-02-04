@@ -1449,7 +1449,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
      */
     private void adaptTitleTextSize() {
         if (titleTextView != null && titleTextSize != -1) {
-            titleTextView.setTextSize(titleTextSize);
+            titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, titleTextSize);
         }
     }
 

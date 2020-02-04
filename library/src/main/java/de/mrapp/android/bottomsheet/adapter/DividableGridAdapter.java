@@ -22,6 +22,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -307,7 +308,7 @@ public class DividableGridAdapter extends BaseAdapter {
         }
 
         if(getItemTextSize() != -1){
-            viewHolder.titleTextView.setTextSize(getItemTextSize());
+            viewHolder.titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, getItemTextSize());
         }
 
     }
@@ -377,7 +378,7 @@ public class DividableGridAdapter extends BaseAdapter {
         }
 
         if(getDividerTextSize() != -1) {
-            viewHolder.titleTextView.setTextSize(getDividerTextSize());
+            viewHolder.titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, getDividerTextSize());
         }
     }
 
