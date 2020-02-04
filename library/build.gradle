@@ -24,4 +24,4 @@ dependencies {
 }
 
 
-apply from: 'https://randomstuffshared.s3.eu-west-2.amazonaws.com/gradle-mvn-push.gradle'
+//apply from: 'https://randomstuffshared.s3.eu-west-2.amazonaws.com/gradle-mvn-push.gradle'
