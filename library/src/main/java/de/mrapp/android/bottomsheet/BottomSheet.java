@@ -1890,7 +1890,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
     /**
      * Returns the Typeface of the items of the bottom sheet.
      *
-     * @return The color of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * @return The color of the items of the bottom sheet as an {@link Typeface} value or -1, if no
      * custom color has been set
      */
     public final Typeface getTitleTypeface() {
@@ -1989,7 +1989,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
     /**
      * Returns the Typeface of the items of the bottom sheet.
      *
-     * @return The color of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * @return The color of the items of the bottom sheet as an {@link Typeface} value or -1, if no
      * custom color has been set
      */
     public final Typeface getDividerTypeface() {
@@ -2002,7 +2002,7 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
     /**
      * Returns the Typeface of the items of the bottom sheet.
      *
-     * @return The color of the items of the bottom sheet as an {@link Integer} value or -1, if no
+     * @return The typeface of the items of the bottom sheet as an {@link Typeface} value or -1, if no
      * custom color has been set
      */
     public final Typeface getItemTypeface() {
