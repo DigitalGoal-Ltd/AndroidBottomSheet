@@ -60,7 +60,6 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.List;
-import java.lang.reflect.Type;
 
 import de.mrapp.android.bottomsheet.adapter.DividableGridAdapter;
 import de.mrapp.android.bottomsheet.model.AbstractItem;
@@ -487,15 +486,15 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
 
 
         /**
-         * Sets the TextSize of the title of the bottom sheet, which is created by the builder.
+         * Sets the textSize of the title of the bottom sheet, which is created by the builder.
          *
-         * @param TextSize
-         *         The TextSize to use on the title
+         * @param textSize
+         *         The textSize to use on the title
          * @return The builder, the method has been called upon, as an instance of the class {@link
          * Builder}
          */
-        public final Builder setTitleTextSize(final int TextSize) {
-            bottomSheet.setTitleTextSize(TextSize);
+        public final Builder setTitleTextSize(final int textSize) {
+            bottomSheet.setTitleTextSize(textSize);
             return this;
         }
 

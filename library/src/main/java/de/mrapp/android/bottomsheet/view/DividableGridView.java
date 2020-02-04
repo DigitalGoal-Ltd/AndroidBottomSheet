@@ -24,7 +24,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import java.lang.reflect.Type;
 import de.mrapp.android.bottomsheet.BottomSheet;
 import de.mrapp.android.bottomsheet.R;
 import de.mrapp.android.bottomsheet.adapter.DividableGridAdapter;
