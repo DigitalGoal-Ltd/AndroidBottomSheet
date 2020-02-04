@@ -60,6 +60,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.List;
+import java.lang.reflect.Type;
 
 import de.mrapp.android.bottomsheet.adapter.DividableGridAdapter;
 import de.mrapp.android.bottomsheet.model.AbstractItem;
