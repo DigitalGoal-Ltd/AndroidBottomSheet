@@ -1944,11 +1944,11 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
     /**
      * Sets the textSize of the items of the bottom sheet.
      *
-     * @param TextSize
+     * @param textSize
      *         The textSize
      */
-    public final void setItemTextSize(final int TextSize) {
-        adapter.setItemTextSize(TextSize);
+    public final void setItemTextSize(final int textSize) {
+        adapter.setItemTextSize(textSize);
         adapter.notifyDataSetChanged();
 
     }
@@ -1964,13 +1964,13 @@ public class BottomSheet extends Dialog implements DialogInterface, DraggableVie
 
 
     /**
-     * Sets the typeface of the items of the bottom sheet.
+     * Sets the textSize of the items of the bottom sheet.
      *
-     * @param TextSize
-     *         The TextSize
+     * @param textSize
+     *         The textSize
      */
-    public final void setDividerTextSize(final int TextSize) {
-        adapter.setDividerTextSize(TextSize);
+    public final void setDividerTextSize(final int textSize) {
+        adapter.setDividerTextSize(textSize);
         adapter.notifyDataSetChanged();
     }
 
